@@ -6,6 +6,7 @@ package com.example.Utilisateurs.controllers;
 import com.example.Utilisateurs.repositories.UtilisateurRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import com.example.Utilisateurs.entities.Utilisateur;
 
 @RestController
 @CrossOrigin("*")

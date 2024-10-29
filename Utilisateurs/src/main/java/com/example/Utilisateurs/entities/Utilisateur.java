@@ -1,4 +1,4 @@
-package Utilisateurs.src.main.java.com.example.Utilisateurs.entities;
+package com.example.Utilisateurs.entities;
 
 
 import jakarta.persistence.Entity;

@@ -5,12 +5,13 @@ import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.example.Utilisateurs.entities.Utilisateur;
 
 @Entity
-@DiscriminatorValue("CLIENT") // Utilisé pour indiquer le type d'entité dans l'héritage
+@DiscriminatorValue("CLIENT")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Client extends Utilisateur {
-    private String adresseLivraison; // Ajoutez ici d'autres attributs spécifiques au client si nécessaire
+    private String adresseLivraison;
 }

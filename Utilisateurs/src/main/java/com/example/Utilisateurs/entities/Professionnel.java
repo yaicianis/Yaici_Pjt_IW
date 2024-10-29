@@ -6,12 +6,13 @@ import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.example.Utilisateurs.entities.Utilisateur;
 
 @Entity
-@DiscriminatorValue("PROFESSIONNEL") // Indique que ce type est un professionnel
+@DiscriminatorValue("PROFESSIONNEL")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Professionnel extends Utilisateur {
-    private String numeroSIRET; // Attribut spécifique aux professionnels
+    private String numeroSIRET;
 }
