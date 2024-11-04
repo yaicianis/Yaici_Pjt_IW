@@ -9,14 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>Disponibilite</artifactId>
+	<artifactId>Rendez_vous</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Disponibilite</name>
-<<<<<<< HEAD
-	<description>micro service Disponibilite</description>
-=======
-	<description>Demo project for class Disponibilite</description>
->>>>>>> 6c34202 (quelques modifications dans le code de tache 1)
+	<name>Rendez_vous</name>
+	<description>Demo project for class Rendez_vous</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -32,10 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
-<<<<<<< HEAD
-=======
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
->>>>>>> 6c34202 (quelques modifications dans le code de tache 1)
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,12 +37,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-<<<<<<< HEAD
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-=======
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		<dependency>
@@ -68,7 +55,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
->>>>>>> 6c34202 (quelques modifications dans le code de tache 1)
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -83,13 +69,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-	</dependencies>
-=======
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -102,7 +81,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
->>>>>>> 6c34202 (quelques modifications dans le code de tache 1)
 
 	<build>
 		<plugins>

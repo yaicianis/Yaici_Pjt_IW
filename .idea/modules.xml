@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/Yaici_Pjt_IW.iml" filepath="$PROJECT_DIR$/.idea/Yaici_Pjt_IW.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/tp1 IW.iml" filepath="$PROJECT_DIR$/.idea/tp1 IW.iml" />
+>>>>>>> 6c34202 (quelques modifications dans le code de tache 1)
     </modules>
   </component>
 </project>
