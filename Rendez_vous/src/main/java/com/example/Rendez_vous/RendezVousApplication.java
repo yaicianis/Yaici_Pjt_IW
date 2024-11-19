@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+//debut
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 @Table(name = "appointments")
 @Entity
@@ -33,7 +36,11 @@ enum Status {
 
 @Repository
 interface AppointmentRepository extends JpaRepository <Appointment,Long> {
+//debut
+List<Appointment> findByAppointmentDate(LocalDate appointmentDate);
+List<Appointment> findByStatus(Status status);
 
+//fin
 }
 
 @RestController
@@ -72,6 +79,53 @@ class appointmentRestController {
 	}
 
 }
+//debut
+@RestController
+@RequestMapping("/yaici")
+ class yaiciRestController {
+	private final AppointmentRepository appointmentRepository;
+
+	public yaiciRestController(AppointmentRepository appointmentRepository) {
+		this.appointmentRepository = appointmentRepository;
+	}
+
+	@GetMapping("/{id}")
+	public Appointment getAppointment(@PathVariable Long id) {
+		return appointmentRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Rendez-vous introuvable"));
+	}
+
+	@GetMapping("/date/{appointmentDate}")
+	public List<Appointment> getAppointmentsByDate(@PathVariable String appointmentDate) {
+		LocalDate date = LocalDate.parse(appointmentDate);
+		return appointmentRepository.findByAppointmentDate(date);
+	}
+
+	@GetMapping("/status/{status}")
+	public List<Appointment> getAppointmentsByStatus(@PathVariable String status) {
+		try {
+			Status appointmentStatus = Status.valueOf(status.toUpperCase());
+			return appointmentRepository.findByStatus(appointmentStatus);
+		} catch (IllegalArgumentException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Statut invalide", e);
+		}
+	}
+
+	@PutMapping("/{id}/status/{status}")
+	public Appointment updateAppointmentStatus(@PathVariable Long id, @PathVariable String status) {
+		Appointment appointment = appointmentRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Rendez-vous introuvable"));
+
+		try {
+			Status newStatus = Status.valueOf(status.toUpperCase());
+			appointment.setStatus(newStatus);
+			return appointmentRepository.save(appointment);
+		} catch (IllegalArgumentException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Statut invalide", e);
+		}
+	}
+}
+//fin
 
 @SpringBootApplication
 public class RendezVousApplication {
