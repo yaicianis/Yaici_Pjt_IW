@@ -1,0 +1,23 @@
+<div class="availability-container">
+  <h1>Gestion des Disponibilités</h1>
+
+  <!-- Formulaire pour ajouter une disponibilité -->
+  <form (ngSubmit)="addAvailability()">
+    <label for="startTime">Heure de début</label>
+    <input type="datetime-local" id="startTime" [(ngModel)]="newAvailability.startTime" name="startTime" required />
+
+    <label for="endTime">Heure de fin</label>
+    <input type="datetime-local" id="endTime" [(ngModel)]="newAvailability.endTime" name="endTime" required />
+
+    <button type="submit">Ajouter Disponibilité</button>
+  </form>
+
+  <!-- Liste des disponibilités -->
+  <h2>Vos disponibilités</h2>
+  <ul>
+    <li *ngFor="let availability of availabilities">
+      <span>{{ availability.startTime }} - {{ availability.endTime }} ({{ availability.isAvailable ? 'Disponible' : 'Indisponible' }})</span>
+      <button (click)="deleteAvailability(availability.id!)">Supprimer</button>
+    </li>
+  </ul>
+</div>

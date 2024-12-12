@@ -1,0 +1,72 @@
+/* Organisation générale de la page */
+:host {
+  display: flex;
+  height: 100vh; /* Prend toute la hauteur de l'écran */
+  overflow: hidden;
+}
+
+/* Style de la barre latérale */
+mat-toolbar {
+  background-color: #8b7dff; /* Couleur mauve */
+  display: flex;
+  flex-direction: column; /* Organisation verticale */
+  justify-content: flex-start;
+  align-items: center;
+  width: 250px; /* Largeur fixe pour la barre */
+  height: 100vh; /* Occupe toute la hauteur */
+  padding: 20px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des boutons dans la barre latérale */
+mat-toolbar button {
+  background-color: #5c67db; /* Couleur des boutons */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 90%; /* Largeur ajustée */
+  text-align: left; /* Alignement du texte */
+}
+
+mat-toolbar button:hover {
+  background-color: #4a55b4; /* Couleur au survol */
+  transform: translateY(-2px); /* Effet d'élévation */
+}
+
+mat-toolbar button mat-icon {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Style pour le contenu principal */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto; /* Permet le défilement si le contenu dépasse */
+}
+
+h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+button {
+  background-color: #ff6b6b; /* Couleur des boutons d'action */
+  color: white;
+  font-size: 14px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #e63946; /* Couleur au survol */
+  transform: translateY(-2px);
+}

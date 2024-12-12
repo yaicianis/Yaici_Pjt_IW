@@ -1,0 +1,70 @@
+<div class="main-container">
+  <!-- Conteneur principal avec disposition en ligne -->
+  <div class="layout">
+    <!-- Barre de navigation verticale -->
+    <mat-toolbar class="toolbar">
+      <ng-container>
+        <button mat-flat-button routerLink="/dashboard-professional">
+          <mat-icon>dashboard</mat-icon> Dashboard
+        </button>
+        <button mat-flat-button routerLink="/professional-availabilitys">
+          <mat-icon>calendar_today</mat-icon> Availabilities
+        </button>
+        <button mat-flat-button routerLink="/professional-add-availabilitys">
+          <mat-icon>add</mat-icon> Add Availability
+        </button>
+      </ng-container>
+    </mat-toolbar>
+
+    <!-- Contenu principal -->
+    <div class="dashboard-container">
+      <h2>Tableau de bord</h2>
+      <div *ngIf="!professionalId">
+        <p>Vous n'êtes pas connecté. Veuillez vous connecter pour voir vos rendez-vous.</p>
+      </div>
+
+      <div *ngIf="professionalId">
+        <h1>Bienvenue, Dr. {{ professional.name }}</h1>
+        <p>Voici vos rendez-vous :</p>
+
+        <!-- Si aucun rendez-vous n'est trouvé -->
+        <div *ngIf="appointments.length === 0">
+          <p>Aucun rendez-vous pour l'instant.</p>
+        </div>
+
+        <!-- Liste des rendez-vous -->
+        <div *ngIf="appointments.length > 0">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let appointment of appointments">
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.status }}</td>
+                <td>
+                  <ng-container *ngIf="appointment.status === 'En attente'">
+                    <button (click)="confirmAppointment(appointment.id)">Confirmer</button>
+                    <button (click)="cancelAppointment(appointment.id)">Annuler</button>
+                  </ng-container>
+                  <ng-container *ngIf="appointment.status === 'En cours'">
+                    <button disabled>En cours</button>
+                  </ng-container>
+                  <ng-container *ngIf="appointment.status === 'Confirmé'">
+                    <button disabled>Confirmé</button>
+                  </ng-container>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

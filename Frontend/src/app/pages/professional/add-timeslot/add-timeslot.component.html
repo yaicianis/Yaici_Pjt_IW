@@ -1,0 +1,67 @@
+<div class="main-container">
+  <div class="layout">
+    <!-- Barre de navigation verticale -->
+    <mat-toolbar class="toolbar">
+      <ng-container>
+        <button mat-flat-button routerLink="/dashboard-professional">
+          <mat-icon>dashboard</mat-icon> Dashboard
+        </button>
+        <button mat-flat-button routerLink="/professional-availabilitys">
+          <mat-icon>calendar_today</mat-icon> Availabilities
+        </button>
+        <button mat-flat-button routerLink="/professional-add-availabilitys">
+          <mat-icon>add</mat-icon> Add Availability
+        </button>
+      </ng-container>
+    </mat-toolbar>
+
+    <!-- Contenu principal -->
+    <div class="content-container">
+      <div class="add-availability-container">
+        <div *ngIf="isLoading" class="loading-message">
+          <p>Chargement des disponibilités...</p>
+        </div>
+
+        <div *ngIf="!isLoading">
+          <!-- Formulaire d'ajout -->
+          <form (ngSubmit)="addAvailability()" class="add-availability-form">
+            <label for="date">Date:</label>
+            <input type="date" id="date" [(ngModel)]="newAvailability.date" name="date" required />
+
+            <label for="time">Heure:</label>
+            <input type="time" id="time" [(ngModel)]="newAvailability.time" name="time" required />
+
+            <button type="submit">Ajouter</button>
+          </form>
+
+          <!-- Tableau des disponibilités -->
+          <table *ngIf="availabilities.length > 0">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let availability of availabilities">
+                <td>
+                  <input [(ngModel)]="availability.date" />
+                </td>
+                <td>
+                  <input [(ngModel)]="availability.time" />
+                </td>
+                <td>
+                  <button (click)="updateAvailability(availability.id, availability.date, availability.time)">
+                    Modifier
+                  </button>
+                  <button (click)="deleteAvailability(availability.id)">Supprimer</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

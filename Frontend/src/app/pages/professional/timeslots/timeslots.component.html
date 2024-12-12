@@ -1,0 +1,69 @@
+<div class="main-container">
+  <!-- Conteneur principal avec disposition en ligne -->
+  <div class="layout">
+    <!-- Barre de navigation verticale -->
+    <mat-toolbar class="toolbar">
+      <ng-container>
+        <button mat-flat-button routerLink="/dashboard-professional">
+          <mat-icon>dashboard</mat-icon> Dashboard
+        </button>
+        <button mat-flat-button routerLink="/professional-availabilitys">
+          <mat-icon>calendar_today</mat-icon> Availabilities
+        </button>
+        <button mat-flat-button routerLink="/professional-add-availabilitys">
+          <mat-icon>add</mat-icon> Add Availability
+        </button>
+      </ng-container>
+    </mat-toolbar>
+
+    <!-- Contenu principal -->
+    <div class="content-container">
+      <!-- Recherche des disponibilités -->
+      <div class="search-container">
+        <h3>Rechercher des Disponibilités</h3>
+        <form (submit)="onSearch($event)">
+          <div>
+            <label for="searchDate">Date :</label>
+            <input id="searchDate" type="date" [(ngModel)]="searchDate" name="searchDate" />
+          </div>
+          <div>
+            <label for="professionalId">Professionnel :</label>
+            <select id="professionalId" [(ngModel)]="selectedProfessionalId" name="professionalId">
+              <option value="">Tous</option>
+              <option *ngFor="let professional of professionals" [value]="professional.id">
+                {{ professional.name }}
+              </option>
+            </select>
+          </div>
+          <button type="submit">Rechercher</button>
+        </form>
+      </div>
+
+      <!-- Résultats de la recherche -->
+      <div *ngIf="filteredAvailabilities.length > 0">
+        <h3>Résultats de la recherche</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let availability of filteredAvailabilities">
+              <td>{{ availability.date }}</td>
+              <td>{{ availability.time }}</td>
+              <td>
+                <button (click)="updateAvailability(availability.id, availability.date, availability.time)">
+                  Modifier
+                </button>
+                <button (click)="deleteAvailability(availability.id)">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

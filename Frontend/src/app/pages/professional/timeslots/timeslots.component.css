@@ -1,0 +1,152 @@
+/* Conteneur principal */
+.main-container {
+  display: flex;
+  height: 100vh; /* Pleine hauteur de la fenêtre */
+  background-color: #f7f7f7;
+}
+
+/* Layout principal : barre de navigation + contenu */
+.layout {
+  display: flex;
+  flex-direction: row; /* Barre de navigation à gauche, contenu à droite */
+  width: 100%;
+}
+
+/* Barre de navigation verticale */
+mat-toolbar.toolbar {
+  background-color: thistle;
+  display: flex;
+  flex-direction: column; /* Organisation verticale des boutons */
+  justify-content: flex-start;
+  align-items: center;
+  width: 250px; /* Largeur fixe de la barre */
+  height: 100vh; /* Pleine hauteur */
+  padding: 20px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Boutons de la barre de navigation */
+mat-toolbar button {
+  background-color: cadetblue;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 90%; /* Largeur ajustée pour les boutons */
+  text-align: left; /* Alignement du texte */
+}
+
+mat-toolbar button:hover {
+  background-color: #5a9e9e;
+  transform: translateY(-2px);
+}
+
+mat-toolbar button mat-icon {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Conteneur principal */
+.content-container {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto; /* Ajout du défilement si le contenu dépasse */
+}
+
+/* Section de recherche */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-container h3 {
+  font-size: 24px;
+  color: #333;
+}
+
+.search-container form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-container label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.search-container input,
+.search-container select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.search-container button {
+  background-color: cadetblue;
+  color: white;
+  font-size: 16px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-container button:hover {
+  background-color: #5a9e9e;
+  transform: translateY(-2px);
+}
+
+/* Table des résultats */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+table td {
+  background-color: white;
+}
+
+button {
+  background-color: #e74c3c;
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,62 @@
+<div class="auth-container">
+    <!-- Formulaire de connexion -->
+    <div class="login-form">
+      <h2>Connexion</h2>
+      <form (ngSubmit)="onLogin()">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="loginData.email" name="email" required />
+  
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" [(ngModel)]="loginData.password" name="password" required />
+  
+        <button type="submit">Se connecter</button>
+      </form>
+  
+      <!-- Lien pour créer un compte -->
+      <p class="register-link">
+        Pas de compte ? <a (click)="showRegister()">Créer un compte</a>
+      </p>
+    </div>
+  
+    <!-- Formulaire d'inscription (affiché conditionnellement) -->
+    <div class="register-form" *ngIf="isRegistering">
+      <h2>Créer un compte</h2>
+      <form (ngSubmit)="onRegister()">
+        <label for="register-email">Email</label>
+        <input
+          type="email"
+          id="register-email"
+          [(ngModel)]="registerData.email"
+          name="registerEmail"
+          required
+        />
+  
+        <label for="register-password">Mot de passe</label>
+        <input
+          type="password"
+          id="register-password"
+          [(ngModel)]="registerData.password"
+          name="registerPassword"
+          required
+        />
+  
+        <label for="confirm-password">Confirmer le mot de passe</label>
+        <input
+          type="password"
+          id="confirm-password"
+          [(ngModel)]="registerData.confirmPassword"
+          name="confirmPassword"
+          required
+        />
+  
+        <button type="submit">S'inscrire</button>
+      </form>
+  
+      <!-- Lien pour revenir à la connexion -->
+      <p class="login-link">
+        Déjà un compte ? <a (click)="showLogin()">Se connecter</a>
+      </p>
+    </div>
+  </div>
+
+  

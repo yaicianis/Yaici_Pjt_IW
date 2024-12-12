@@ -1,0 +1,47 @@
+<div class="rendezvous-container">
+  <h1>Gestion des Rendez-vous</h1>
+
+  <!-- Filtres pour les rendez-vous -->
+  <div class="filters">
+    <label for="date">Filtrer par Date</label>
+    <input type="date" id="date" [(ngModel)]="filters.date" (ngModelChange)="filterAppointments()" />
+
+    <label for="status">Filtrer par Statut</label>
+    <select id="status" [(ngModel)]="filters.status" (ngModelChange)="filterAppointments()">
+      <option value="">Tous</option>
+      <option value="SCHEDULED">Planifié</option>
+      <option value="CANCELLED">Annulé</option>
+      <option value="COMPLETED">Terminé</option>
+    </select>
+  </div>
+
+  <!-- Section des rendez-vous filtrés -->
+  <h2>Rendez-vous Filtrés</h2>
+  <ul>
+    <li *ngFor="let rdv of filteredAppointments">
+      <span>{{ rdv.appointmentDate }} - {{ rdv.status }}</span>
+      <button *ngIf="rdv.status === 'SCHEDULED'" (click)="updateStatus(rdv, 'COMPLETED')">
+        Marquer comme Terminé
+      </button>
+      <button *ngIf="rdv.status === 'SCHEDULED'" (click)="updateStatus(rdv, 'CANCELLED')">
+        Annuler
+      </button>
+    </li>
+  </ul>
+
+  <!-- Ajouter un nouveau rendez-vous -->
+  <h2>Ajouter un Nouveau Rendez-vous</h2>
+  <form (ngSubmit)="createAppointment()">
+    <label for="newDate">Date</label>
+    <input type="date" id="newDate" [(ngModel)]="newAppointment.appointmentDate" name="appointmentDate" required />
+
+    <label for="newStatus">Statut</label>
+    <select id="newStatus" [(ngModel)]="newAppointment.status" name="status" required>
+      <option value="SCHEDULED">Planifié</option>
+      <option value="CANCELLED">Annulé</option>
+      <option value="COMPLETED">Terminé</option>
+    </select>
+
+    <button type="submit">Ajouter</button>
+  </form>
+</div>
